@@ -1,6 +1,28 @@
 import { ADD_CAR, START_CAR, STOP_CAR } from '../utils/actions';
 
-export default function reducer(state, action) {
+const randomNum = () => Math.floor(Math.random() * 20000);
+
+const initialState = {
+  cars: [
+    {
+      id: randomNum(),
+      make: 'Honda',
+      model: 'Civic',
+      year: '2008',
+      isRunning: false,
+    },
+    {
+      id: randomNum(),
+      make: 'Tesla',
+      model: 'Y',
+      year: '2021',
+      isRunning: false,
+    },
+  ]
+}
+
+
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_CAR: {
       const newCarId = state.cars[state.cars.length - 1].id + 1;
